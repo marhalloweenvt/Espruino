@@ -39,7 +39,7 @@ jobs:
     strategy:
       # devices to build for
       matrix:
-        board: [LINUX, ESP32, ESP8266_BOARD, ESP8266_4MB, MICROBIT1, MICROBIT2, ESP32C3_IDF4]
+        board: [LINUX]
       # try and build for all devices even if one fails
       fail-fast: false 
     steps:
@@ -74,7 +74,7 @@ jobs:
     strategy:
       # devices to build for
       matrix:
-        board: [AMIIBOLINK_MINIMAL, PUCKJS, PIXLJS, JOLTJS, MDBT42Q, BANGLEJS, BANGLEJS2, PUCKJS_MINIMAL, PUCKJS_NETWORK]
+        board: [AMIIBOLINK_MINIMAL]
       # try and build for all devices even if one fails
       fail-fast: false 
     steps:
@@ -83,9 +83,8 @@ jobs:
         fetch-depth: 0    
     - name: make ${{ matrix.board }}
       env:
-        TRAVIS: 1
         RELEASE: 1
-        DFU_UPDATE_BUILD: 1
+        BOOTLOADER: 1
         BOARD: ${{ matrix.board }} 
         UPLOADTOKEN: ${{ secrets.UPLOADTOKEN }}  
       run: |
@@ -109,7 +108,7 @@ jobs:
     strategy:
       # devices to build for
       matrix:
-        board: [ESPRUINOBOARD, PICO_R1_3, ESPRUINOWIFI]
+        board: [ESPRUINOBOARD]
       # try and build for all devices even if one fails
       fail-fast: false 
     steps:
