@@ -12,19 +12,19 @@ on:
       enable_main:
         description: Build default boards (linux, ESP, Microbit)
         type: boolean
-        default: true
+        default: false
       enable_dfu:
         description: Build boards with DFU (puckjs, pixljs, banglejs)
         type: boolean
-        default: true
+        default: false
       enable_padded:
         description: Build boards with bootloader padding (espruinoboard, -wifi, pico)
         type: boolean
-        default: true
+        default: false
       enable_emulator:
         description: Build emulator for banglejs
         type: boolean
-        default: true
+        default: false
       
 
 permissions:
@@ -74,7 +74,7 @@ jobs:
     strategy:
       # devices to build for
       matrix:
-        board: [PUCKJS, PIXLJS, JOLTJS, MDBT42Q, BANGLEJS, BANGLEJS2, PUCKJS_MINIMAL, PUCKJS_NETWORK]
+        board: [AMIIBOLINK_MINIMAL, PUCKJS, PIXLJS, JOLTJS, MDBT42Q, BANGLEJS, BANGLEJS2, PUCKJS_MINIMAL, PUCKJS_NETWORK]
       # try and build for all devices even if one fails
       fail-fast: false 
     steps:
